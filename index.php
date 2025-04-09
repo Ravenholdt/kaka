@@ -6,7 +6,10 @@
 <body style="background-color:#E0218A">
 
     <?php 
-        $kakan_url = base64_decode($_GET['kakan']); 
+        $kakan_url = base64_decode($_GET['kakan']);
+        if (filter_var($kakan_url, FILTER_VALIDATE_INT) === false) {
+            $kakan_url = 0;
+          }
         $_SERVER['HTTP_USER_AGENT']??null;
         $kakan_clicks = $kakan_url;
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false)
